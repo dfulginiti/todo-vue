@@ -1,18 +1,16 @@
 <template>
-    <create-task-button></create-task-button>
+    <div class="container flex-center">
+        <create-task-button></create-task-button>
 
-    <tasks></tasks>
+        <tasks></tasks>
+    </div>
 </template>
 
 <script>
-    import Tasks from './Tasks';
     import CreateTaskButton from './CreateTaskButton';
+    import Tasks from './Tasks';
 
     export default {
         components: { Tasks, CreateTaskButton },
-
-        mounted() {
-
-        }
     }
 </script>
