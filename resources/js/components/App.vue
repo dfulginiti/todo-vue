@@ -1,17 +1,18 @@
 <template>
-    <div class="columns">
-        <div class="column">1</div>
-        <div class="column">2</div>
-        <div class="column">3</div>
-        <div class="column">4</div>
-        <div class="column">5</div>
-    </div>
+    <create-task-button></create-task-button>
+
+    <tasks></tasks>
 </template>
 
 <script>
+    import Tasks from './Tasks';
+    import CreateTaskButton from './CreateTaskButton';
+
     export default {
+        components: { Tasks, CreateTaskButton },
+
         mounted() {
-            console.log('Component mounted.')
+
         }
     }
 </script>
