@@ -6,87 +6,28 @@
 
         <modal :is_active="modal_is_active" @close="modal_is_active = false">
             <div class="field">
-                <label class="label">Name</label>
+                <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <textarea rows="5" class="textarea" placeholder="Task Description"></textarea>
                 </div>
             </div>
 
             <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                <label class="label">Due Date</label>
+                <div class="control has-icons-left">
+                    <datepicker input-class="input" placeholder="Task Due Date"></datepicker>
                     <span class="icon is-small is-left">
-                      <i class="fas fa-user"></i>
+                      <i class="fas fa-clock"></i>
                     </span>
-                    <span class="icon is-small is-right">
-                      <i class="fas fa-check"></i>
-                    </span>
-                </div>
-                <p class="help is-success">This username is available</p>
-            </div>
-
-            <div class="field">
-                <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                      <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-                <p class="help is-danger">This email is invalid</p>
-            </div>
-
-            <div class="field">
-                <label class="label">Subject</label>
-                <div class="control">
-                    <div class="select">
-                        <select>
-                            <option>Select dropdown</option>
-                            <option>With options</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Textarea"></textarea>
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                        I agree to the <a href="#">terms and conditions</a>
-                    </label>
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <label class="radio">
-                        <input type="radio" name="question">
-                        Yes
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="question">
-                        No
-                    </label>
                 </div>
             </div>
 
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Submit</button>
+                    <button class="button is-link">Add Task</button>
                 </div>
                 <div class="control">
-                    <button class="button is-text">Cancel</button>
+                    <button class="button is-text" @click="modal_is_active = false">Cancel</button>
                 </div>
             </div>
         </modal>
@@ -94,11 +35,12 @@
 </template>
 
 <script>
+    import Datepicker from 'vuejs-datepicker';
     import Modal from './utilities/Modal';
     import Tasks from './Tasks';
 
     export default {
-        components: { Modal, Tasks },
+        components: { Datepicker, Modal, Tasks },
         data() {
             return {
                 modal_is_active: false,
