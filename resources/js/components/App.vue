@@ -8,14 +8,19 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <textarea rows="5" class="textarea" placeholder="Task Description"></textarea>
+                    <textarea
+                            rows="5"
+                            class="textarea"
+                            placeholder="Task Description"
+                            v-model="add_task_form.description"
+                    ></textarea>
                 </div>
             </div>
 
             <div class="field">
                 <label class="label">Due Date</label>
                 <div class="control has-icons-left">
-                    <datepicker input-class="input" placeholder="Task Due Date"></datepicker>
+                    <datepicker input-class="input" placeholder="Task Due Date" v-model="add_task_form.due_date"></datepicker>
                     <span class="icon is-small is-left">
                       <i class="fas fa-clock"></i>
                     </span>
@@ -24,7 +29,7 @@
 
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Add Task</button>
+                    <button class="button is-link" @click="addTask">Add Task</button>
                 </div>
                 <div class="control">
                     <button class="button is-text" @click="modal_is_active = false">Cancel</button>
@@ -44,6 +49,20 @@
         data() {
             return {
                 modal_is_active: false,
+                add_task_form: {
+                    description: null,
+                    due_date: null,
+                }
+            }
+        },
+        methods: {
+            async addTask() {
+                try {
+                    const response = await axios.post('/api/task', this.add_task_form);
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
             }
         }
     }
