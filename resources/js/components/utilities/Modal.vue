@@ -18,6 +18,13 @@
                 this.active = false;
                 this.$emit('close');
             }
+        },
+        watch: {
+            is_active(val) {
+                const html = $('html');
+
+                val ? html.addClass('is-clipped') : html.removeClass('is-clipped');
+            }
         }
     }
 </script>
