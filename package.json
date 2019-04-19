@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bulma": "^0.7.4",
+        "moment": "^2.24.0",
         "vue-cli": "^2.9.6",
         "vuejs-datepicker": "^1.5.4"
     }

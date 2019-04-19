@@ -1,6 +1,12 @@
 <template>
-    <div class="container flex-center">
-        <button class="button is-large is-primary" @click="modal_is_active = true">Create a Task</button>
+    <div class="container" style="padding-top: 50px">
+        <div class="is-flex justify-content-between">
+            <button class="button is-primary" @click="modal_is_active = true">Create a Task</button>
+            <button class="button is-primary" @click="modal_is_active = true">Create a Task</button>
+            <button class="button is-primary" @click="modal_is_active = true">Create a Task</button>
+        </div>
+
+        <div class="is-clearfix"></div>
 
         <tasks></tasks>
 

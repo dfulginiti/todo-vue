@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->post('/task', 'TaskController@create');
+Route::middleware('api')->get('/task', 'TaskController@index');
