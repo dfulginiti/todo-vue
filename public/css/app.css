@@ -43,6 +43,10 @@ span.icon:hover {
           filter: brightness(85%);
 }
 
+i.fa-sort-down {
+  padding-bottom: 7px;
+}
+
 /*! bulma.io v0.7.4 | MIT License | github.com/jgthms/bulma */
 
 @-webkit-keyframes spinAround {
