@@ -35325,11 +35325,11 @@ var render = function() {
                 ref: "filter tasks",
                 attrs: { "input-class": "input", placeholder: "Task Due Date" },
                 model: {
-                  value: _vm.add_task_form.due_date,
+                  value: _vm.filters.due_date,
                   callback: function($$v) {
-                    _vm.$set(_vm.add_task_form, "due_date", $$v)
+                    _vm.$set(_vm.filters, "due_date", $$v)
                   },
-                  expression: "add_task_form.due_date"
+                  expression: "filters.due_date"
                 }
               }),
               _vm._v(" "),

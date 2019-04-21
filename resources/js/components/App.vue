@@ -19,7 +19,7 @@
             </b-dropdown>
 
             <div class="control has-icons-left">
-                <datepicker ref="filter tasks" input-class="input" placeholder="Task Due Date" v-model="add_task_form.due_date"></datepicker>
+                <datepicker ref="filter tasks" input-class="input" placeholder="Task Due Date" v-model="filters.due_date"></datepicker>
                 <span class="icon is-small is-left">
                   <i class="fas fa-clock"></i>
                 </span>
