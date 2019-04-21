@@ -8,27 +8,15 @@
                 </span>
             </div>
 
-            <div class="dropdown">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                        <span>Completed Status</span>
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                    <div class="dropdown-content">
-                        <a class="dropdown-item">
-                            Yes
-                        </a>
+            <b-dropdown v-model="filters.is_complete" hoverable aria-role="list">
+                <button class="button is-info" slot="trigger">
+                    <span>Completed Status</span>
+                    <b-icon icon="sort-down" pack="fas"></b-icon>
+                </button>
 
-                        <a class="dropdown-item">
-                            No
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <b-dropdown-item :value="true" aria-role="listitem">Yes</b-dropdown-item>
+                <b-dropdown-item :value="false" aria-role="listitem">No</b-dropdown-item>
+            </b-dropdown>
 
             <div class="control has-icons-left">
                 <datepicker ref="filter tasks" input-class="input" placeholder="Task Due Date" v-model="add_task_form.due_date"></datepicker>
