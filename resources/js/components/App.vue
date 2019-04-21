@@ -32,7 +32,7 @@
 
         <div class="is-clearfix"></div>
 
-        <tasks></tasks>
+        <tasks :filters="filters"></tasks>
 
         <modal :is_active="modal_is_active" @close="modal_is_active = false">
             <div class="field">

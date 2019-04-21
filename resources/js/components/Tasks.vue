@@ -19,7 +19,7 @@
         </tfoot>
 
         <tbody>
-            <tr v-for="task in tasks">
+            <tr v-for="task in filteredTasks">
                 <td>{{ task.description }}</td>
                 <td>{{ taskDueOn(task) }}</td>
                 <td>{{ isTaskComplete(task) }}</td>
@@ -45,9 +45,24 @@
     import axios from 'axios';
 
     export default {
+        props: ['filters'],
         data() {
             return {
+                mutableFilters: this.filters,
                 tasks: [],
+            }
+        },
+        computed: {
+            filteredTasks() {
+                this.$root.removeEmptyValues(this.mutableFilters);
+
+                if (this.$root.isEmptyObject(this.mutableFilters)) {
+                    return this.tasks;
+                }
+
+                return _.filter(this.tasks, task => {
+                    return task.description.toLowerCase().includes(this.mutableFilters.description.toLowerCase());
+                });
             }
         },
         created() {
