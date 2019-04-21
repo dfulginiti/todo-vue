@@ -2,7 +2,7 @@
     <div class="container" style="padding-top: 50px">
         <div class="is-flex justify-content-between">
             <div class="control has-icons-right" style="width: 300px">
-                <input type="text" class="input" placeholder="Search for a task">
+                <input type="text" class="input" placeholder="Search for a task" v-model="filters.description">
                 <span class="icon is-small is-right">
                     <i class="fas fa-search"></i>
                 </span>
@@ -93,6 +93,11 @@
                 modal_is_active: false,
                 add_task_form: {
                     description: null,
+                    due_date: null,
+                },
+                filters: {
+                    description: null,
+                    is_complete: null,
                     due_date: null,
                 }
             }

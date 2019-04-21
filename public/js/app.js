@@ -1833,6 +1833,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1847,6 +1883,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       modal_is_active: false,
       add_task_form: {
         description: null,
+        due_date: null
+      },
+      filters: {
+        description: null,
+        is_complete: null,
         due_date: null
       }
     };
@@ -20919,43 +20960,75 @@ var render = function() {
     [
       _c("div", { staticClass: "is-flex justify-content-between" }, [
         _c(
-          "button",
+          "div",
           {
-            staticClass: "button is-primary",
-            on: {
-              click: function($event) {
-                _vm.modal_is_active = true
-              }
-            }
+            staticClass: "control has-icons-right",
+            staticStyle: { width: "300px" }
           },
-          [_vm._v("Create a Task")]
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters.description,
+                  expression: "filters.description"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Search for a task" },
+              domProps: { value: _vm.filters.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.filters, "description", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "button is-primary",
-            on: {
-              click: function($event) {
-                _vm.modal_is_active = true
-              }
-            }
-          },
-          [_vm._v("Create a Task")]
-        ),
+        _vm._m(1),
         _vm._v(" "),
         _c(
-          "button",
-          {
-            staticClass: "button is-primary",
-            on: {
-              click: function($event) {
-                _vm.modal_is_active = true
+          "div",
+          { staticClass: "control has-icons-left" },
+          [
+            _c("datepicker", {
+              ref: "filter tasks",
+              attrs: { "input-class": "input", placeholder: "Task Due Date" },
+              model: {
+                value: _vm.add_task_form.due_date,
+                callback: function($$v) {
+                  _vm.$set(_vm.add_task_form, "due_date", $$v)
+                },
+                expression: "add_task_form.due_date"
               }
-            }
-          },
-          [_vm._v("Create a Task")]
-        )
+            }),
+            _vm._v(" "),
+            _vm._m(2)
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "button is-primary",
+              on: {
+                click: function($event) {
+                  _vm.modal_is_active = true
+                }
+              }
+            },
+            [_vm._v("Create a Task")]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "is-clearfix" }),
@@ -21013,6 +21086,7 @@ var render = function() {
               { staticClass: "control has-icons-left" },
               [
                 _c("datepicker", {
+                  ref: "create task",
                   attrs: {
                     "input-class": "input",
                     placeholder: "Task Due Date"
@@ -21064,7 +21138,69 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-right" }, [
+      _c("i", { staticClass: "fas fa-search" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "dropdown" }, [
+      _c("div", { staticClass: "dropdown-trigger" }, [
+        _c(
+          "button",
+          {
+            staticClass: "button",
+            attrs: { "aria-haspopup": "true", "aria-controls": "dropdown-menu" }
+          },
+          [
+            _c("span", [_vm._v("Completed Status")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "icon is-small" }, [
+              _c("i", {
+                staticClass: "fas fa-angle-down",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "dropdown-menu",
+          attrs: { id: "dropdown-menu", role: "menu" }
+        },
+        [
+          _c("div", { staticClass: "dropdown-content" }, [
+            _c("a", { staticClass: "dropdown-item" }, [
+              _vm._v("\n                        Yes\n                    ")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item" }, [
+              _vm._v("\n                        No\n                    ")
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-clock" })
+    ])
+  }
+]
 render._withStripped = true
 
 
