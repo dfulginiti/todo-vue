@@ -2005,9 +2005,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return this.tasks;
       }
 
-      return _.filter(this.tasks, function (task) {
-        return task.description.toLowerCase().includes(_this.mutableFilters.description.toLowerCase());
-      });
+      var filteredTasks = this.tasks;
+
+      if (_.has(this.mutableFilters, 'description')) {
+        filteredTasks = _.filter(filteredTasks, function (task) {
+          return task.description.toLowerCase().includes(_this.mutableFilters.description.toLowerCase());
+        });
+      }
+
+      if (_.has(this.mutableFilters, 'is_complete')) {
+        filteredTasks = _.filter(filteredTasks, function (task) {
+          return task.is_complete === _this.mutableFilters.is_complete;
+        });
+      }
+
+      if (_.has(this.mutableFilters, 'due_date')) {
+        filteredTasks = _.filter(filteredTasks, function (task) {
+          return _this.$root.datesAreEqual(task.due_date, _this.mutableFilters.due_date);
+        });
+      }
+
+      return filteredTasks;
     }
   },
   created: function created() {
@@ -52470,7 +52488,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "button is-primary",
+                staticClass: "button is-info",
                 on: {
                   click: function($event) {
                     _vm.modal_is_active = true
@@ -66436,6 +66454,11 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       Object.keys(obj).forEach(function (key) {
         return [null, ""].includes(obj[key]) && delete obj[key];
       });
+    },
+    datesAreEqual: function datesAreEqual(date1, date2) {
+      date1 = new Date(date1);
+      date2 = new Date(date2);
+      return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate();
     }
   }
 });

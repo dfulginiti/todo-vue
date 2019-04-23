@@ -60,13 +60,23 @@
                     return this.tasks;
                 }
 
-                let filteredTasks =  _.filter(this.tasks, task => {
-                    return task.description.toLowerCase().includes(this.mutableFilters.description.toLowerCase());
-                });
+                let filteredTasks = this.tasks;
+
+                if (_.has(this.mutableFilters, 'description')) {
+                    filteredTasks =  _.filter(filteredTasks, task => {
+                        return task.description.toLowerCase().includes(this.mutableFilters.description.toLowerCase());
+                    });
+                }
 
                 if (_.has(this.mutableFilters, 'is_complete')) {
                     filteredTasks =  _.filter(filteredTasks, task => {
                         return task.is_complete === this.mutableFilters.is_complete;
+                    });
+                }
+
+                if (_.has(this.mutableFilters, 'due_date')) {
+                    filteredTasks = _.filter(filteredTasks, task => {
+                        return this.$root.datesAreEqual(task.due_date, this.mutableFilters.due_date);
                     });
                 }
 
