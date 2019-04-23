@@ -26,7 +26,7 @@
             </div>
 
             <div>
-                <button class="button is-primary" @click="modal_is_active = true">Create a Task</button>
+                <button class="button is-info" @click="modal_is_active = true">Create a Task</button>
             </div>
         </div>
 

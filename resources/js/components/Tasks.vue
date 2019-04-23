@@ -60,9 +60,17 @@
                     return this.tasks;
                 }
 
-                return _.filter(this.tasks, task => {
+                let filteredTasks =  _.filter(this.tasks, task => {
                     return task.description.toLowerCase().includes(this.mutableFilters.description.toLowerCase());
                 });
+
+                if (_.has(this.mutableFilters, 'is_complete')) {
+                    filteredTasks =  _.filter(filteredTasks, task => {
+                        return task.is_complete === this.mutableFilters.is_complete;
+                    });
+                }
+
+                return filteredTasks;
             }
         },
         created() {
